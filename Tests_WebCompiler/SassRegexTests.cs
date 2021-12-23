@@ -27,7 +27,7 @@ namespace Tests_WebCompiler
         public bool Test(string input)
         {
             var matches = SassCompiler.SassDependencyRegex.Matches(input);
-            return matches.Any();
+            return matches.Count > 0;
         }
     }
 }

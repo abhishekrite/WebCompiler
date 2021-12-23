@@ -8,7 +8,8 @@ namespace WebCompiler.Compile
     {
         public static string RelativeTo(this string path, string @base)
         {
-            return Path.GetRelativePath(@base, Path.GetFullPath(path));
+            return FilePathHelper.GetRelativePath(@base, Path.GetFullPath(path));
+            //return Path.GetRelativePath(@base, Path.GetFullPath(path));
         }
     }
     public class Place : Compiler

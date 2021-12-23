@@ -48,13 +48,13 @@ namespace WebCompiler.Compile
                 case ".CSS" //we zip .css files, if they are .min.css files that are not created by webcompiler
                 when zipper != terminating_compiler
                 && file.EndsWith(".min.css", StringComparison.InvariantCultureIgnoreCase)
-                && !File.Exists(file.Replace(".min.css", ".css", StringComparison.InvariantCultureIgnoreCase)):
+                && !File.Exists(file.Replace(".min.css", ".css")):
                     return Compile(file).With(zipper).Then(place).Then(cleanup);
 
                 case ".JS" //we zip .js files, if they are .min.js files that are not created by webcompiler
                 when zipper != terminating_compiler
                 && file.EndsWith(".min.js", StringComparison.InvariantCultureIgnoreCase)
-                && !File.Exists(file.Replace(".min.js", ".js", StringComparison.InvariantCultureIgnoreCase)):
+                && !File.Exists(file.Replace(".min.js", ".js")):
                     return Compile(file).With(zipper).Then(place).Then(cleanup);
 
                 case ".LESS":

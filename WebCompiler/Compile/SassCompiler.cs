@@ -123,12 +123,16 @@ namespace WebCompiler.Compile
                 var content = File.ReadAllText(candidate, Encoding);
                 //match both <@import "myFile.scss";> and <@import url("myFile.scss");> syntax
                 var matches = SassDependencyRegex.Matches(content);
-                if (matches.Any())
+                if (matches.Count > 0)
                 {
                     var info = new FileInfo(candidate);
-                    foreach (var match in matches.Where(m => m != null))
+                    foreach (var match in matches)
                     {
-                        var importedfiles = GetFileInfos(info, match);
+                        if (match == null)
+                        {
+                            continue;
+                        }
+                        var importedfiles = GetFileInfos(info, (Match)match);
                         foreach (var importedfile in importedfiles)
                         {
                             if (dependencies.Add(importedfile)) // only consider the dependency a candidate, if we haven't encountered it yet.

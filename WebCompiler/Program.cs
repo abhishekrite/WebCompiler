@@ -277,7 +277,7 @@ File format to specify compiler configuration (-c|--config):
         {
             foreach (var file in Directory.GetFiles(directory))
             {
-                if (!Path.GetFileName(file).StartsWith('_'))
+                if (!Path.GetFileName(file).StartsWith("_"))
                 {
                     yield return file;
                 }
