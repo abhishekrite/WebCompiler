@@ -4,6 +4,14 @@ using System.Linq;
 
 namespace WebCompiler.Compile
 {
+    internal static class ListExtension
+    {
+        public static IEnumerable<T> SkipLast<T>(this List<T> source, int count)
+        {
+            return source.TakeWhile((item, index) => index < source.Count - count);
+        }
+    }
+    
     public class Cleaner : Compiler
     {
         public override CompilerResult Compile(List<(string File, bool Created)> file_sequence)

@@ -122,7 +122,7 @@ namespace WebCompiler.Compile
 
                 var content = File.ReadAllText(candidate, Encoding);
                 //match both <@import "myFile.scss";> and <@import url("myFile.scss");> syntax
-                var matches = SassDependencyRegex.Matches(content);
+                var matches = SassDependencyRegex.Matches(content).OfType<Match>();
                 if (matches.Any())
                 {
                     var info = new FileInfo(candidate);

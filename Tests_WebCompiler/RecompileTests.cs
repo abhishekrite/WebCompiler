@@ -28,7 +28,7 @@ namespace Tests_WebCompiler
             File.AppendAllText(input, "\n.new-rule { color: black; }");
             await Task.Delay(100); // create a delay, because if things happen fast enough, the accuracy of the file timestamp is too low to detect the change in file
             var new_timestamp = ProcessFile();
-            File.Move(input + ".bak", input, overwrite: true);
+            File.Move(input + ".bak", input);
             Assert.AreNotEqual(timestamp, new_timestamp, "Compiling a second time should alter the file, since there is an actual change for once!");
         }
         [Test]
@@ -43,7 +43,7 @@ namespace Tests_WebCompiler
             File.AppendAllText(import_file, "\n.new-rule { color: black; }");
             await Task.Delay(100); // create a delay, because if things happen fast enough, the accuracy of the file timestamp is too low to detect the change in file
             var new_timestamp = ProcessFile();
-            File.Move(import_file + ".bak", import_file, overwrite: true);
+            File.Move(import_file + ".bak", import_file);
             Assert.AreNotEqual(timestamp, new_timestamp, "Compiling a second time should alter the file, since there is an actual change for once!");
         }
     }

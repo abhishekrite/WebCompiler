@@ -28,7 +28,7 @@ namespace WebCompiler.Compile
             }
             else if (!File.ReadAllBytes(output_file).SequenceEqual(File.ReadAllBytes(tmp_file)))
             {
-                File.Move(tmp_file, output_file, true);
+                File.Move(tmp_file, output_file);
             }
             else
             {
